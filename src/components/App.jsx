@@ -1,16 +1,24 @@
+import { Toaster } from 'react-toastify';
+import { Switch, Route } from 'react-router-dom';
+import { ContactsPage } from 'pages/contacts';
+import { CreateContactPage } from 'pages/CreateContact';
+import { HomePage } from 'pages/HomePage';
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <>
+      <Switch>
+        <Route path="/" exact>
+          <HomePage />
+        </Route>
+        <Route path="/contacts" exact>
+          <ContactsPage />
+        </Route>
+        <Route path="/contacts/add" exact>
+          <CreateContactPage />
+        </Route>
+      </Switch>
+      <Toaster position="top-right" />
+    </>
   );
 };
