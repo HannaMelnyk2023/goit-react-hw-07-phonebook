@@ -8,7 +8,7 @@ export const ContactsPage = () => {
 
   return (
     <div>
-      <Link to="/contacts/add">Add Contact</Link>
+      <Link to="/contacts/create">Create</Link>
       {isFetching && <p>Loading...</p>}
       {contacts && (
         <ContactsList

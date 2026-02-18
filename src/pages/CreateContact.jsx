@@ -1,6 +1,7 @@
 import { useCreateContactsMutation } from '../redux/contacts/contactsSlice';
 import { Redirect } from 'react-router-dom';
 import { Spinner } from 'components/Spinner/Spinner';
+import { toast } from 'react-toastify';
 
 export const CreateContactPage = () => {
  
@@ -12,7 +13,7 @@ export const CreateContactPage = () => {
       name: e.currentTarget.elements[0].value,
       number: e.currentTarget.elements[1].value,
     });
-
+      toast.success('Contact created successfully!');
   };
   return (
   <>
