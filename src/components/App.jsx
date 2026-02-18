@@ -14,7 +14,7 @@ export const App = () => {
         <Route path="/contacts" exact>
           <ContactsPage />
         </Route>
-        <Route path="/contacts/add" exact>
+        <Route path="/contacts/create" exact>
           <CreateContactPage />
         </Route>
       </Switch>
