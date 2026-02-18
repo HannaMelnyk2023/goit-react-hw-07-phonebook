@@ -1,13 +1,16 @@
-export const ContactsList = ({ contacts, onDeleteContact, deleting}) => {
+import {ContactsListItem} from 'components/ContactsListItem/ContactsListItem';
+export const ContactsList = ({ contacts, onDeleteContact, deleting }) => {
   return (
     <ul>
       {contacts.map(contact => (
-        <li key={contact.id}>
-          {contact.name}: {contact.number}
-          <button onClick={() => onDeleteContact(contact.id)} disabled={deleting}>
-           {deleting ? "Deleting..." : "Delete"}
-          </button>
-        </li>
+        <ContactsListItem
+          key={contact.id}
+          id={contact.id}
+          name={contact.name}
+          number={contact.number}
+          onDeleteContact={onDeleteContact}
+          deleting={deleting}
+        />
       ))}
     </ul>
   );
