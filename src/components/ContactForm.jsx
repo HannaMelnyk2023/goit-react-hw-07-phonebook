@@ -14,7 +14,7 @@ function ContactForm() {
           return;
       }
       
-    dispatch(addContacts({ name, number }));
+    dispatch(addContacts({ name, phone: number }));
     setName('');
     setNumber('');
   };

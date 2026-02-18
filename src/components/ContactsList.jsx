@@ -3,10 +3,13 @@ import { deleteContact } from '../redux/contacts/operations';
 
 function ContactsList() {
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts);
+  const contacts = useSelector(state => state.contacts.items);
+  console.log(contacts);
   const fiter = useSelector(state => state.filter);
   const isLoading = useSelector(state => state.isLoading);
   const error = useSelector(state => state.error);
+
+  console.log('Visible contacts:', contacts);
 
   const visibleContacts = contacts.filter(contact =>
     contact.name.toLowerCase().includes(fiter.toLowerCase())
@@ -18,7 +21,7 @@ function ContactsList() {
     <ul>
       {visibleContacts.map(contact => (
         <li key={contact.id}>
-          {contact.name}: {contact.number}
+          {contact.name}: {contact.phone}
           {''}
           <button onClick={() => dispatch(deleteContact(contact.id))}>
             Delete
