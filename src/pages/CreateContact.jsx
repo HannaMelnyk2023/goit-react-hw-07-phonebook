@@ -1,15 +1,31 @@
 import { useCreateContactsMutation } from '../redux/contacts/contactsSlice';
+import { useHistory, Redirect } from 'react-router-dom';
+import { Spinner } from 'components/Spinner/Spinner';
 
 export const CreateContactPage = () => {
-  const [createContact] = useCreateContactsMutation();
-  const handleSubmit = e => {
+  // const history = useHistory();
+  const [createContact, { isLoading, isSuccess }] = useCreateContactsMutation();
+  const handleSubmit = async e => {
     e.preventDefault();
-    console.log(e.currentTarget.elements.content.value);
-    createContact({
+     e.currentTarget.reset();
+       createContact({
       name: e.currentTarget.elements[0].value,
       number: e.currentTarget.elements[1].value,
     });
-      e.target.reset();
+
+    // try {
+    //   await createContact({
+    //     name: e.currentTarget.elements[0].value,
+    //     number: e.currentTarget.elements[1].value,
+    //   });
+    //   history.push('/contacts');
+    // }
+    //   catch (error) {
+    //     console.log('error', error);
+    //   }
+
+    // console.log(e.currentTarget.elements.content.value);
+
     // const form = e.target;
     // const name = form.elements[0].value;
     // const number = form.elements[1].value;
@@ -17,12 +33,17 @@ export const CreateContactPage = () => {
     // form.reset();
   };
   return (
-    <div>
+  <>
+    {isSuccess && <Redirect to="/contacts" />}
+    
       <form autoComplete="off" onSubmit={handleSubmit}>
         <input type="text" placeholder="Name" />
         <input type="text" placeholder="Number" />
-        <button type="submit">Create</button>
+        <button type="submit" disabled={isLoading}>
+          {isLoading && <Spinner size={12} />}
+          Create
+        </button>
       </form>
-    </div>
+  </>
   );
 };
