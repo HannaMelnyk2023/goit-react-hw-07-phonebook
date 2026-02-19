@@ -4,12 +4,10 @@ import { deleteContact } from '../redux/contacts/operations';
 function ContactsList() {
   const dispatch = useDispatch();
   const contacts = useSelector(state => state.contacts.items);
-  
+
   const fiter = useSelector(state => state.filter);
   const isLoading = useSelector(state => state.isLoading);
   const error = useSelector(state => state.error);
-
-  
 
   const visibleContacts = contacts.filter(contact =>
     contact.name.toLowerCase().includes(fiter.toLowerCase())

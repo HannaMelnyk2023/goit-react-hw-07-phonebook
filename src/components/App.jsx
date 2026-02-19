@@ -1,17 +1,15 @@
-import ContactForm from "./ContactForm";
-import ContactList from "./ContactsList";
-import Filter from "./Filter";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { fetchContacts } from "../redux/contacts/operations";
-
-
+import ContactForm from './ContactForm';
+import ContactList from './ContactsList';
+import Filter from './Filter';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchContacts } from '../redux/contacts/operations';
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchContacts());
-    }, [dispatch]);
+  }, [dispatch]);
 
   return (
     <div>
